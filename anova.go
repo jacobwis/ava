@@ -2,11 +2,13 @@ package ava
 
 import "github.com/ThePaw/probab/dst"
 
+// AnovaResult is returned after completing an ANOVA test. Stat is the computed F-statistic, and PValue is the corresponding probability.
 type AnovaResult struct {
 	Stat   float64
 	PValue float64
 }
 
+// OneWayAnova performs a One Way ANOVA test on the provided data.
 func OneWayAnova(groups [][]float64) AnovaResult {
 	f := fStat(groups)
 	p := probabilityOfFStat(f, groups)
@@ -16,6 +18,7 @@ func OneWayAnova(groups [][]float64) AnovaResult {
 	}
 }
 
+// Significant returns a boolean value indicating whether the test results are statistically significant.
 func (a AnovaResult) Significant(alpha float64) bool {
 	return a.PValue < alpha
 }
