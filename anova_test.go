@@ -84,7 +84,7 @@ func TestMSA(t *testing.T) {
 		[]float64{20.6, 25.2, 20.8, 24.7, 22.9},
 		[]float64{25.4, 19.9, 22.6, 17.5, 20.4},
 	}
-	actual := msa(data)
+	actual := MSA(data)
 	expected := 21.095166666666632
 
 	if actual != expected {
@@ -99,7 +99,7 @@ func TestMSW(t *testing.T) {
 		[]float64{20.6, 25.2, 20.8, 24.7, 22.9},
 		[]float64{25.4, 19.9, 22.6, 17.5, 20.4},
 	}
-	actual := msw(data)
+	actual := MSW(data)
 	expected := 6.0940
 
 	if actual != expected {

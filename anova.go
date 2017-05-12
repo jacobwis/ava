@@ -56,16 +56,16 @@ func sst(groups [][]float64) float64 {
 	return sst
 }
 
-func msa(groups [][]float64) float64 {
+func MSA(groups [][]float64) float64 {
 	return ssa(groups) / float64(len(groups)-1)
 }
 
-func msw(groups [][]float64) float64 {
+func MSW(groups [][]float64) float64 {
 	return ssw(groups) / float64(nestedLen(groups)-len(groups))
 }
 
 func fStat(groups [][]float64) float64 {
-	return msa(groups) / msw(groups)
+	return MSA(groups) / MSW(groups)
 }
 
 func probabilityOfFStat(f float64, groups [][]float64) float64 {
