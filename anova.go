@@ -56,10 +56,12 @@ func sst(groups [][]float64) float64 {
 	return sst
 }
 
+// MSA computes the mean squared variance among groups.
 func MSA(groups [][]float64) float64 {
 	return ssa(groups) / float64(len(groups)-1)
 }
 
+// MSW computes the mean squared variance due to random variation.
 func MSW(groups [][]float64) float64 {
 	return ssw(groups) / float64(nestedLen(groups)-len(groups))
 }
