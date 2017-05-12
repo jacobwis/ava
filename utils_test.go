@@ -83,3 +83,13 @@ func TestNestedLen(t *testing.T) {
 		t.Errorf("nestedLen: Expected %v, got %v", expectedResult, actualResult)
 	}
 }
+
+func TestVariance(t *testing.T) {
+	sample := []float64{39, 29, 43, 52, 39, 44, 40, 31, 44, 35}
+	actual := variance(sample)
+	expected := 45.82222222222223
+
+	if expected != actual {
+		t.Errorf("variance: Expected %v, got %v", expected, actual)
+	}
+}

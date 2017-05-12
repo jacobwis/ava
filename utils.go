@@ -39,3 +39,13 @@ func nestedLen(groups [][]float64) int {
 	}
 	return n
 }
+
+func variance(sample []float64) float64 {
+	var sumOfSquaredDiff float64
+	xbar := average(sample)
+
+	for _, xi := range sample {
+		sumOfSquaredDiff += (xi - xbar) * (xi - xbar)
+	}
+	return sumOfSquaredDiff / float64(len(sample)-1)
+}
