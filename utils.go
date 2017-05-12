@@ -49,3 +49,13 @@ func variance(sample []float64) float64 {
 	}
 	return sumOfSquaredDiff / float64(len(sample)-1)
 }
+
+func pooledVariance(groups [][]float64) float64 {
+	var numer float64
+	var denom float64
+	for _, sample := range groups {
+		numer += float64(len(sample)-1) * variance(sample)
+		denom += float64(len(sample) - 1)
+	}
+	return numer / denom
+}

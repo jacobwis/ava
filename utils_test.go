@@ -93,3 +93,16 @@ func TestVariance(t *testing.T) {
 		t.Errorf("variance: Expected %v, got %v", expected, actual)
 	}
 }
+
+func TestPooledVariance(t *testing.T) {
+	data := [][]float64{
+		[]float64{22, 34, 52, 62, 30, 40, 64, 84, 56, 59},
+		[]float64{52, 71, 76, 54, 67, 83, 66, 90, 77, 84},
+	}
+	actual := pooledVariance(data)
+	expected := 254.0055555555556
+
+	if expected != actual {
+		t.Errorf("pooledVariance: Expected %v, got %v", expected, actual)
+	}
+}
