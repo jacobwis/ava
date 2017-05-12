@@ -18,6 +18,18 @@ func TestPooledVarianceTTest(t *testing.T) {
 	}
 }
 
+func TestTSignificant(t *testing.T) {
+	res := TResult{
+		Stat:   -3.044550122546798,
+		PValue: 0.006974856613970015,
+	}
+	actual := res.Significant(0.05)
+	expected := true
+	if actual != expected {
+		t.Errorf("TSignificant: Expected %v, got %v", expected, actual)
+	}
+}
+
 func TestPooledVarianceTStat(t *testing.T) {
 	data := [][]float64{
 		[]float64{22, 34, 52, 62, 30, 40, 64, 84, 56, 59},

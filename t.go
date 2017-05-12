@@ -12,6 +12,11 @@ type TResult struct {
 	PValue float64
 }
 
+// Significant returns a boolean value indicating whether the test results are statistically significant.
+func (t TResult) Significant(alpha float64) bool {
+	return t.PValue < alpha
+}
+
 // PooledVarianceTTest performs a pooled variance t-test on the provided data.
 func PooledVarianceTTest(groups [][]float64) TResult {
 	t := pooledVarianceTStat(groups)
