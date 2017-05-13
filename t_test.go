@@ -1,6 +1,10 @@
 package ava
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/wisniewskij26/xu"
+)
 
 func TestPooledVarianceTTest(t *testing.T) {
 	data := [][]float64{
@@ -13,8 +17,9 @@ func TestPooledVarianceTTest(t *testing.T) {
 		PValue: 0.006974856613970015,
 	}
 
-	if actual != expected {
-		t.Errorf("PooledVarianceTTest: Expected %+v, got %+v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -25,8 +30,9 @@ func TestTSignificant(t *testing.T) {
 	}
 	actual := res.Significant(0.05)
 	expected := true
-	if actual != expected {
-		t.Errorf("TSignificant: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -38,8 +44,9 @@ func TestPooledVarianceTStat(t *testing.T) {
 	actual := pooledVarianceTStat(data)
 	expected := -3.044550122546798
 
-	if actual != expected {
-		t.Errorf("PooledVarianceTStat: Expected %+v, got %+v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -51,7 +58,8 @@ func TestProbabilityofTStat(t *testing.T) {
 	stat := -3.044550122546798
 	expected := probabilityOfTStat(stat, data)
 	actual := 0.006974856613970015
-	if actual != expected {
-		t.Errorf("probabilityofTStat: Expected %+v, got %+v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }

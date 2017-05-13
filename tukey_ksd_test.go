@@ -1,6 +1,10 @@
 package ava
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/wisniewskij26/xu"
+)
 
 func TestTukeyHSD(t *testing.T) {
 	data := [][]float64{
@@ -17,8 +21,9 @@ func TestTukeyHSD(t *testing.T) {
 		Df:     16,
 	}
 
-	if actual != expected {
-		t.Errorf("TukeyHSD: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -26,8 +31,9 @@ func TestTukeyCriticalRange(t *testing.T) {
 	actual := tukeyCriticalRange(4.05, 6.094, 5, 5)
 	expected := 4.471170652077596
 
-	if actual != expected {
-		t.Errorf("tukeyCriticalRange: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -46,7 +52,8 @@ func TestTukeyComparison(t *testing.T) {
 	}
 	actual = tukey.Compare(data[0], data[2])
 	expected = false
-	if actual != expected {
-		t.Errorf("tukeyComparison: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }

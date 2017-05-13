@@ -1,6 +1,10 @@
 package ava
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/wisniewskij26/xu"
+)
 
 func TestOneWayAnova(t *testing.T) {
 	data := [][]float64{
@@ -14,9 +18,9 @@ func TestOneWayAnova(t *testing.T) {
 		Stat:   3.4616289246253085,
 		PValue: 0.041365599903377515,
 	}
-
-	if actual != expected {
-		t.Errorf("OneWayAnova: Expected %+v, got %+v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -27,8 +31,10 @@ func TestAnovaSignificant(t *testing.T) {
 	}
 	actual := res.Significant(0.05)
 	expected := true
-	if actual != expected {
-		t.Errorf("AnovaSignificant: Expected %v, got %v", expected, actual)
+
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -42,8 +48,9 @@ func TestSSA(t *testing.T) {
 	actual := ssa(data)
 	expected := 63.2854999999999
 
-	if actual != expected {
-		t.Errorf("SSA: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -57,8 +64,9 @@ func TestSSW(t *testing.T) {
 	actual := ssw(data)
 	expected := 97.5040
 
-	if actual != expected {
-		t.Errorf("SSW: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -72,8 +80,9 @@ func TestSST(t *testing.T) {
 	actual := sst(data)
 	expected := 160.7895
 
-	if actual != expected {
-		t.Errorf("SST: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -87,8 +96,9 @@ func TestMSA(t *testing.T) {
 	actual := MSA(data)
 	expected := 21.095166666666632
 
-	if actual != expected {
-		t.Errorf("MSA: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -102,8 +112,9 @@ func TestMSW(t *testing.T) {
 	actual := MSW(data)
 	expected := 6.0940
 
-	if actual != expected {
-		t.Errorf("MSW: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -117,8 +128,9 @@ func TestFStat(t *testing.T) {
 	actual := fStat(data)
 	expected := 3.4616289246253085
 
-	if actual != expected {
-		t.Errorf("fStat: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
@@ -132,7 +144,8 @@ func TestProbabilityOfFStat(t *testing.T) {
 	actual := probabilityOfFStat(3.4616289246253085, data)
 	expected := 0.041365599903377515
 
-	if actual != expected {
-		t.Errorf("probabilityOfFStat: Expected %v, got %v", expected, actual)
+	err := xu.AssertEqual(actual, expected)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
